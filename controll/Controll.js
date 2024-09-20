@@ -6,5 +6,13 @@ export default class Controll{
         this.jatekter=$(".jatekter")
         this.model = new Model()
         new Jatekter(this.model.listaMegjelenit(), this.jatekter)
+        this.#esemenykezelo();
+    }
+
+    #esemenykezelo(){
+        $(window).on("kattintas", (event)=>{
+            this.model.lepes(event.detail);
+            new Jatekter(this.model.listaMegjelenit(), this.jatekter);
+        });
     }
 }
