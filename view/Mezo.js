@@ -8,6 +8,8 @@ export default class Mezo{
         this.#index=index
         this.szuloElem = szuloElem;
         this.mezoMegjelenit()
+        this.kattintottElem = $(".kartya:last-child");
+        this.esemenyKezelo()
     }
     //tagfüggvények
     mezoMegjelenit(){
@@ -15,5 +17,13 @@ export default class Mezo{
             <div class="card col-sm kartya" id="box">
             <p class="card-text">${this.#lepes}</p>
             </div>`)
+    }
+
+    esemenyKezelo(){
+        this.kattintottElem.on("click", ()=>{
+            const e = new CustomEvent("kattintas", {detail: this.#index});
+            window.dispatchEvent(e);
+            console.log(e);
+        })
     }
 }
